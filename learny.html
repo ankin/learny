@@ -1,14 +1,24 @@
 <head>
-  <title>learny</title>
+<title>learny</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+<div class="container">
+	<div class="col-md-6 col-md-offset-4">
+		<form class="new-word form-group">
+			<input type="text" name="text" class="form-control" placeholder="Type and press enter to add new word" />
+		</form>
+	</div>
+	<br/>
+	<div class="col-md-6 col-md-offset-4">
+		{{#each words}}
+        {{> word}}
+    {{/each}}
+	</div>
+</div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="word">
+	<p>{{text}}</p>
+	<p>{{createdAt}}</p>
 </template>
