@@ -1,12 +1,28 @@
-  Words = new Mongo.Collection("words");
+  GermanWords = new Mongo.Collection("germanWords"
+    //, {
+    //transform: function(doc) {
+      //doc.enWords.forEach(function(englishWord) {
+        
+        //doc.enWordsRef = doc.enWordsRef || [];
+        //var enWord = EnglishWords.findOne(englishWord);
+       // doc.enWordsRef.push(EnglishWords.findOne(englishWord));
+      //});
+    //}
+  //}
+  )
+
+  EnglishWords = new Mongo.Collection("englishWords");
+
+  console.log(EnglishWords.findOne(new Meteor.Collection.ObjectID("552a9d30cec62b0594da6d03")));
 
   if (Meteor.isClient) {
     // This code only runs on the client
     Template.body.helpers({
       words: function() {
-        return Words.find({});
+        return GermanWords.find({});
       }
     });
+
 
 
     Template.body.events({
@@ -15,7 +31,7 @@
 
         var text = event.target.text.value;
 
-        Words.insert({
+        GermanWords.insert({
           text: text,
           createdAt: new Date() // current time
         });
