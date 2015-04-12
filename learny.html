@@ -20,4 +20,11 @@
 
 <template name="word">
 	<p>{{value}}</p>
+	{{> englishWordsTpl}}
+</template>
+
+<template name="englishWordsTpl">
+	{{#each englishWords}}
+        {{value}}
+    {{/each}}
 </template>
